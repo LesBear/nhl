@@ -1,0 +1,48 @@
+body{
+    background-color:#fffccc;
+}
+
+form{
+    margin-bottom:0px;
+}
+
+nav{
+    text-align:center;
+}
+
+fieldset{
+    background-color:#fffbbb;
+    padding:20px;
+    margin:20px;
+    margin-bottom:0px;
+}
+
+legend{
+    font-size:20;
+    color:red;
+}
+
+.hidden{
+    visibility:hidden;
+}
+
+#Result{
+    width:100%;
+    display:block;
+    margin-left:40%;
+}
+
+#navButton{
+    margin-left:90%;
+}
+
+#back, #forward{
+    color:red;
+}
+
+.buttonColor{
+    background-color:#cccbbb;
+}
+.Highlight{
+    background-color:yellow;
+}
