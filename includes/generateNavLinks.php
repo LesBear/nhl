@@ -9,7 +9,7 @@ function generateNavLinks($pageNum, $count, $numRowsToShow, $siteToLink, $search
 		$forward = $pageNum + 1;			
 	}
 	
-	$startTag = "<a href='".$siteToLink."?searchBar=" .$search ."&page=";
+	$startTag = "<a href='".$siteToLink."?search=" .$search ."&page=";
     $closeStartTag = "'>";
     $endTag = "</a>";
 
@@ -18,6 +18,9 @@ function generateNavLinks($pageNum, $count, $numRowsToShow, $siteToLink, $search
     if ($back !== -1){
         $links .= $startTag .$back .$closeStartTag ."Prev" .$endTag;
     }
+	
+	$links .= "  " .($pageNum + 1) ." of " .((int)($count / $numRowsToShow) + 1) ."  ";
+	
     if ($forward !== -1){
         $links .= $startTag .$forward .$closeStartTag ."Next" .$endTag;
     }

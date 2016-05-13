@@ -1,13 +1,37 @@
 <?php
 include('includes/db_connection.php');
+include('includes/countEntries.php');
 include('includes/top10.php');
 include('includes/print_table.php');
+include('includes/generateNavLinks.php');
+include('includes/html_helpers.php');
 
-    if($_GET["page"] !== "" && $_GET["page"] !== null)
-    {
-        $PTS_data = Top10("PTS", "PTS", $_GET["page"]);
-        $Top10PTS = "Results from player: ".($_GET["page"] * 10) ." to player ".($_GET["page"] * 10+10) . printTable($PTS_data);
-    }
+$search = $_GET["search"];
+
+if($search !== "" && $search !== null)
+{
+	
+	if(isset($_GET["page"])){
+		$page = $_GET["page"];
+	}else{
+		$page = 0;
+	}
+	
+	$count = countEntries($search, "player_stats", $search);
+	
+	if($count > 0){
+		$data = Top10($search, $page);
+		if(!empty($data)){
+			$Top10s = "There are " .$count ." entries" .printTable($data) .generateNavLinks($page, $count, 10, $_SERVER["PHP_SELF"], $search);			
+		} else {
+			$nationality = "empty db";
+		}
+	} else {
+		$nationality = "empty db";
+	}
+	
+	$form = generatestatsSelects($data, (($search === "plus_minus") ? "+/-" : $search));    
+}
 ?>
 <html>
     <head>
@@ -15,11 +39,11 @@ include('includes/print_table.php');
         <?php include("header.php");?>
     </head>
 <body>
+	<?php echo $form; ?>
     <div id="Result">
         <?php
-            echo $Top10PTS;
+            echo $Top10s;
         ?>
     </div>
-    <?php include("footer.php");?>
 </body>
 </html>

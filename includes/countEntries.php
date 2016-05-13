@@ -1,14 +1,14 @@
 <?php
 
-function countEntries($column, $key){
+function countEntries($column, $table, $key){
 
 	$myDBconnection = db_connect();
 	$countQuery = "SELECT
 		COUNT(p." .$column .")
 		
-    FROM nhl.players p
+    FROM nhl." .$table ." p
 	
-	WHERE p." .$column ." = '".$key."';"; 
+	WHERE p." .$column ." = ".$key.";"; 
 
 	$result = mysqli_query($myDBconnection ,$countQuery);
 	$result = mysqli_fetch_row($result);

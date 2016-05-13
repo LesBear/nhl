@@ -7,21 +7,22 @@ include('includes/generateNavLinks.php');
 include('includes/html_helpers.php');
 
 $nationality = '';
-
-if($_GET["searchBar"] !== "" && $_GET["searchBar"] !== null)
+$search = $_GET["search"];
+if($_GET["search"] !== "" && $_GET["search"] !== null)
 {
+	
 	if(isset($_GET["page"])){
 		$page = $_GET["page"];
 	}else{
 		$page = 0;
 	}	
 			
-	$count = countEntries("nationality", $_GET["searchBar"]);
+	$count = countEntries("nationality", "players", "'".$search."'");
 	
 	if($count > 0){
-		$data = nationality($_GET["searchBar"], $page);
+		$data = nationality($search, $page);
 		if(!empty($data)){
-			$nationality = "There are " .$count ." players from " .$_GET["searchBar"] .printTable($data) .generateNavLinks($page, $count, 10, $_SERVER["PHP_SELF"], $_GET["searchBar"]);			
+			$nationality = "There are " .$count ." players from " .$search .printTable($data) .generateNavLinks($page, $count, 10, $_SERVER["PHP_SELF"], $search);			
 		} else {
 			$nationality = "empty db";
 		}
@@ -30,7 +31,7 @@ if($_GET["searchBar"] !== "" && $_GET["searchBar"] !== null)
 	}
 }
 $countryData = countrySelect();
-$form = generateCountrySelects($countryData, $_GET["searchBar"]);
+$form = generateCountrySelects($countryData, $search);
 
 ?>
 <html>

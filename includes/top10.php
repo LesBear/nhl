@@ -1,6 +1,6 @@
 <?php
 
-function Top10($type, $typeName, $page=0){
+function Top10($type, $page=0){
 	
 	$myDBconnection = db_connect();
 	$Top10ScoresQuery = "SELECT
@@ -8,7 +8,11 @@ function Top10($type, $typeName, $page=0){
 		p.first_name AS 'Name',
 		p.last_name AS 'Last Name',
 		pt.player_end_team AS 'Team',
-		ps.".$type." AS '".$typeName."',
+		ps.GP AS 'GP',
+		ps.A AS 'A',
+		ps.A1 AS 'A1',
+		ps.PTS AS 'PTS',
+		ps.plus_minus AS '+/-',
 		p.id_player AS 'ID'
 		
     FROM nhl.players p
