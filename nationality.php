@@ -22,7 +22,7 @@ if($_GET["search"] !== "" && $_GET["search"] !== null)
 	if($count > 0){
 		$data = nationality($search, $page);
 		if(!empty($data)){
-			$nationality = "There are " .$count ." players from " .$search .printTable($data) .generateNavLinks($page, $count, 10, $_SERVER["PHP_SELF"], $search);			
+			$nationality = "There are " .$count ." players from " .$search .printTable($data, $page) .generateNavLinks($page, $count, 10, $_SERVER["PHP_SELF"], $search);			
 		} else {
 			$nationality = "empty db";
 		}

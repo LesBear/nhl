@@ -19,7 +19,7 @@ function generateNavLinks($pageNum, $count, $numRowsToShow, $siteToLink, $search
         $links .= $startTag .$back .$closeStartTag ."Prev" .$endTag;
     }
 	
-	$links .= "  " .($pageNum + 1) ." of " .((int)($count / $numRowsToShow) + 1) ."  ";
+	$links .= "  Page " .($pageNum + 1) ." of " .((int)($count / $numRowsToShow) + 1) ."  ";
 	
     if ($forward !== -1){
         $links .= $startTag .$forward .$closeStartTag ."Next" .$endTag;

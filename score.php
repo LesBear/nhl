@@ -22,7 +22,7 @@ if($search !== "" && $search !== null)
 	if($count > 0){
 		$data = Top10($search, $page);
 		if(!empty($data)){
-			$Top10s = "There are " .$count ." entries" .printTable($data) .generateNavLinks($page, $count, 10, $_SERVER["PHP_SELF"], $search);			
+			$Top10s = "There are " .$count ." entries" .printTable($data, $page) .generateNavLinks($page, $count, 10, $_SERVER["PHP_SELF"], $search);			
 		} else {
 			$nationality = "empty db";
 		}

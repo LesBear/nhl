@@ -4,10 +4,10 @@ include('includes/top10.php');
 include('includes/print_table.php');
 
 $PTS_data = Top10("PTS", "PTS");
-$Top10PTS = printTable($PTS_data);
+$Top10PTS = printTable($PTS_data, 0);
 
 $PTS_data = Top10("G", "Goals");
-$Top10Goals = printTable($PTS_data);
+$Top10Goals = printTable($PTS_data, 0);
 
 ?>
 <html>
