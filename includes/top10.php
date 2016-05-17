@@ -38,7 +38,7 @@ function Top10($type, $page=0){
 			return $data;
 		}
 	} else {
-		return "empty result";
+		return "No results found!";
 	}
 }
 

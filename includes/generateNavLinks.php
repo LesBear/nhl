@@ -10,19 +10,19 @@ function generateNavLinks($pageNum, $count, $numRowsToShow, $siteToLink, $search
 	}
 	
 	$startTag = "<a href='".$siteToLink."?search=" .$search ."&page=";
-    $closeStartTag = "'>";
+    $closeStartTag = ">";
     $endTag = "</a>";
 
     $links = "";
 
     if ($back !== -1){
-        $links .= $startTag .$back .$closeStartTag ."Prev" .$endTag;
+        $links .= $startTag .$back ."' class='prev'" .$closeStartTag ."Prev" .$endTag;
     }
 	
-	$links .= "  Page " .($pageNum + 1) ." of " .((int)($count / $numRowsToShow) + 1) ."  ";
+	$links .= "Page " .($pageNum + 1) ." of " .((int)($count / $numRowsToShow) + 1);
 	
     if ($forward !== -1){
-        $links .= $startTag .$forward .$closeStartTag ."Next" .$endTag;
+        $links .= $startTag .$forward ."'class='next'" .$closeStartTag ."Next" .$endTag;
     }
 
     return $links;
@@ -45,13 +45,13 @@ function generateNavLinksPlayerSearch($pageNum, $count, $numRowsToShow, $siteToL
     $links = "";
 
     if ($back !== -1){
-        $links .= $startTag .$back .$closeStartTag ."Prev" .$endTag;
+        $links .= $startTag .$back ."' class='prev'" .$closeStartTag ."Prev" .$endTag;
     }
 	
 	$links .= "  Page " .($pageNum + 1) ." of " .((int)($count / $numRowsToShow) + 1) ."  ";
 	
     if ($forward !== -1){
-        $links .= $startTag .$forward .$closeStartTag ."Next" .$endTag;
+        $links .= $startTag .$forward ."'class='next'" .$closeStartTag ."Next" .$endTag;
     }
 
     return $links;

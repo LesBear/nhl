@@ -47,3 +47,11 @@ legend{
 .Highlight{
     background-color:yellow;
 }
+
+.prev{
+	margin-right:5px;
+}
+
+.next{
+	margin-left:5px;
+}

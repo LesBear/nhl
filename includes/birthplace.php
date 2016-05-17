@@ -37,7 +37,7 @@ function birthPlace($city, $page=0){
 			return $data;
 		}
 	} else {
-		return "empty result from nationality.php";
+		return "No results found!";
 	}
 }
 
@@ -62,6 +62,6 @@ function countrySelect(){
 			return $data;
 		}
 	} else {
-		return "empty result from nationality.php";
+		return "No results found!";
 	}
 }

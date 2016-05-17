@@ -32,10 +32,10 @@ if($count > 0){
 	if(!empty($data)){
 		$players = "There are " .$count ." players matching your search " .printTable($data, $page) .generateNavLinksPlayerSearch($page, $count, 10, $_SERVER["PHP_SELF"], $name, $lastName);			
 	} else {
-		$players = "empty db";
+		$players = "No results found!";
 	}
 } else {
-	$players = "empty db";
+	$players = "No results found!";
 }
    
 
