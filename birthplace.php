@@ -4,14 +4,15 @@ include('includes/countEntries.php');
 include('includes/birthplace.php');
 include('includes/print_table.php');
 include('includes/generateNavLinks.php');
+include('includes/php_utils.php');
 
 $birthPlace = '';
-$search = $_GET["search"];
+$search = sanitize($_GET["search"]);
 if($_GET["search"] !== "" && $_GET["search"] !== null)
 {
 	
 	if(isset($_GET["page"])){
-		$page = $_GET["page"];
+		$page = sanitize($_GET["page"]);
 	}else{
 		$page = 0;
 	}	
@@ -23,10 +24,10 @@ if($_GET["search"] !== "" && $_GET["search"] !== null)
 		if(!empty($data)){
 			$birthPlace = "There are " .$count ." players from " .$search .printTable($data, $page) .generateNavLinks($page, $count, 10, $_SERVER["PHP_SELF"], $search);			
 		} else {
-			$birthPlace = "empty db";
+			$birthPlace = "No results found!";
 		}
 	} else {
-		$birthPlace = "empty db";
+		$birthPlace = "No results found!";
 	}
 }
 

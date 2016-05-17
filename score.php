@@ -5,14 +5,15 @@ include('includes/top10.php');
 include('includes/print_table.php');
 include('includes/generateNavLinks.php');
 include('includes/html_helpers.php');
+include('includes/php_utils.php');
 
-$search = $_GET["search"];
+$search = sanitize($_GET["search"]);
 
 if($search !== "" && $search !== null)
 {
 	
 	if(isset($_GET["page"])){
-		$page = $_GET["page"];
+		$page = sanitize($_GET["page"]);
 	}else{
 		$page = 0;
 	}
@@ -24,10 +25,10 @@ if($search !== "" && $search !== null)
 		if(!empty($data)){
 			$Top10s = "There are " .$count ." entries" .printTable($data, $page) .generateNavLinks($page, $count, 10, $_SERVER["PHP_SELF"], $search);			
 		} else {
-			$nationality = "empty db";
+			$nationality = "No results found!";
 		}
 	} else {
-		$nationality = "empty db";
+		$nationality = "No results found!";
 	}
 	
 	$form = generatestatsSelects($data, (($search === "plus_minus") ? "+/-" : $search));    
